@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f6f2;
+  --foreground: #1c1b19;
+  --muted: #6b6860;
+  --panel: #ffffff;
+  --sunken: #ecebe5;
+  --line: #dedcd4;
+  --accent: #3f6b4e;
+  --danger: #a33a2b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #141412;
+    --foreground: #ecebe6;
+    --muted: #9b988f;
+    --panel: #1c1c1a;
+    --sunken: #2a2a27;
+    --line: #34332f;
+    --accent: #8fbf9c;
+    --danger: #e08a7a;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-panel: var(--panel);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-line bg-panel;
+  }
+  .btn-primary {
+    @apply rounded-lg bg-foreground px-3.5 py-1.5 text-sm font-medium text-background transition-opacity hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-35;
+  }
+  .btn-quiet {
+    @apply rounded-lg px-2.5 py-1 text-sm text-muted transition-colors hover:bg-sunken hover:text-foreground;
+  }
+  .link {
+    @apply underline decoration-line underline-offset-4 hover:decoration-foreground;
+  }
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+}
